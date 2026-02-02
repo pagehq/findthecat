@@ -45,11 +45,13 @@ body{
   width: 18px;
   height: 18px;
   accent-color: #111;
+  flex: 0 0 auto;
 }
 
 .cell span{
   font-size: 14px;
   line-height: 1.1;
+  word-break: break-word;
 }
 
 .actions{
@@ -72,8 +74,19 @@ button:active{
   transform: translateY(1px);
 }
 
-.output{
+button:disabled{
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+.hint{
   margin: 12px 2px 0;
+  font-size: 14px;
+  color: #444;
+}
+
+.output{
+  margin: 6px 2px 0;
   font-size: 14px;
   color: #444;
 }

@@ -1,7 +1,5 @@
 const grid = document.getElementById('grid');
 const sendBtn = document.getElementById('sendBtn');
-const hint = document.getElementById('hint');
-const out = document.getElementById('out');
 
 const ITEMS = [
   "Beach","Beauty Salon","Grocery Store","Airport","Garage","Bedroom",
@@ -12,7 +10,9 @@ const ITEMS = [
   "TV Studio","Thanksgiving Day","Vacation","Ice Cream Truck","Roller Rink","Fourth of July"
 ];
 
-const required = 5;
+const CORRECT_SET = ["Beach","Beauty Salon","Grocery Store","Airport","Garage"];
+const CORRECT_URL = "https://pagehq.github.io/correct";
+const WRONG_URL = "https://pagehq.github.io/wrong";
 
 function render(){
   const frag = document.createDocumentFragment();
@@ -20,38 +20,26 @@ function render(){
   ITEMS.forEach((t, i) => {
     const label = document.createElement('label');
     label.className = 'cell';
-    label.innerHTML =
-      `<input type="checkbox" value="${t}">
-       <span><strong>${i + 1}.</strong> ${t}</span>`;
+    label.innerHTML = `<input type="checkbox" value="${t}"><span><strong>${i + 1}.</strong> ${t}</span>`;
     frag.appendChild(label);
   });
 
   grid.appendChild(frag);
-  grid.addEventListener('change', onChange);
 }
 
 function selectedValues(){
   return [...grid.querySelectorAll('input[type="checkbox"]:checked')].map(x => x.value);
 }
 
-function updateUI(){
-  const c = selectedValues().length;
-  sendBtn.disabled = c !== required;
-
-  if (c < required) hint.textContent = `Select exactly ${required} items (${required - c} remaining).`;
-  else if (c === required) hint.textContent = "Perfect! Now you can press SEND.";
-  else hint.textContent = `You selected ${c} items: they must be exactly ${required}.`;
-}
-
-function onChange(){
-  updateUI();
+function isCorrectSelection(selected){
+  if (selected.length !== CORRECT_SET.length) return false;
+  const s = new Set(selected);
+  return CORRECT_SET.every(x => s.has(x));
 }
 
 sendBtn.addEventListener('click', () => {
-  if (sendBtn.disabled) return;
-  const v = selectedValues();
-  out.textContent = `You selected: ${v.join(', ')}`;
+  const selected = selectedValues();
+  window.location.href = isCorrectSelection(selected) ? CORRECT_URL : WRONG_URL;
 });
 
 render();
-updateUI();

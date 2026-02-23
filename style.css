@@ -66,59 +66,35 @@ body{
 
 .actions{
   display:flex;
-  gap:10px;
   justify-content:center;
   align-items:center;
   margin-top:16px;
-  flex-wrap:wrap;
 }
 
-button, .reviewBtn{
+button{
   border:0;
   border-radius:12px;
   padding:12px 18px;
-  font-weight:700;
+  font-weight:800;
   cursor:pointer;
-  text-decoration:none;
+  background:#16a34a;
+  color:#fff;
   display:inline-flex;
   align-items:center;
   justify-content:center;
 }
 
-button{
-  background:#111;
-  color:#fff;
-}
+button:hover{ background:#15803d; }
+button:active{ transform:translateY(1px); }
 
-button:active, .reviewBtn:active{
-  transform:translateY(1px);
-}
-
-button:disabled{
-  opacity:.45;
-  cursor:not-allowed;
-}
-
-.reviewBtn{
-  background:#16a34a;
-  color:#fff;
-}
-
-.reviewBtn:hover{
-  background:#15803d;
-}
-
-.hint, .out{
+.out{
   margin:10px 2px 0;
   font-size:14px;
   color:#444;
   text-align:center;
 }
 
-.out{ margin-top:6px; }
-
 @media (max-width:620px){
   .grid{ grid-template-columns:repeat(3,minmax(0,1fr)); }
-  .actions{ flex-direction:column; }
-  button, .reviewBtn{ width:100%; }
+  button{ width:100%; }
 }

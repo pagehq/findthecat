@@ -24,19 +24,19 @@ items.forEach((t,i)=>{
 function update(){
   const c=document.querySelectorAll('input[type="checkbox"]:checked').length;
   sendBtn.disabled = c!==5;
-  hint.textContent = c<5 ? `Seleziona esattamente 5 voci (ne mancano ${5-c}).`
-    : c===5 ? "Perfetto! Ora puoi premere INVIA."
-    : `Hai selezionato ${c} voci: devono essere esattamente 5.`;
+  hint.textContent = c<5 ? `Select exactly 5 items (${5-c} remaining).`
+    : c===5 ? "Perfect! Now you can press SEND."
+    : `You selected ${c} items: they must be exactly 5.`;
 }
 
 sendBtn.addEventListener('click',()=>{
   if(sendBtn.disabled) return;
   const v=[...document.querySelectorAll('input[type="checkbox"]:checked')].map(x=>x.value);
-  out.textContent=`Hai selezionato: ${v.join(', ')}`;
+  out.textContent=`You selected: ${v.join(', ')}`;
 });
 
 reviewBtn.addEventListener('click',()=>{
-  out.textContent="Grazie! (qui inseriamo il link della recensione)";
+  out.textContent="Thank you! (the review link will be added here)";
 });
 
 update();

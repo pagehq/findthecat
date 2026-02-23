@@ -1,22 +1,23 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Find the cat</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <main class="box">
+    <h1 class="title">Where did you find the 5 cats?</h1>
+
     <div id="grid" class="grid"></div>
 
     <div class="actions">
       <button id="sendBtn" disabled>SEND</button>
-      <span class="or">or</span>
-      <button id="reviewBtn" class="primary" type="button">LEAVE A REVIEW</button>
+      <a class="reviewBtn" href="http://test.com" target="_blank" rel="noopener">LEAVE A REVIEW</a>
     </div>
 
-    <p id="hint" class="hint">Select exactly 5 items.</p>
+    <p id="hint" class="hint"></p>
     <p id="out" class="out"></p>
   </main>
 

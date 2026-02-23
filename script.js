@@ -10,7 +10,7 @@ const ITEMS = [
   "TV Studio","Thanksgiving Day","Vacation","Ice Cream Truck","Roller Rink","Fourth of July"
 ];
 
-const CORRECT_SET = ["Beach","Beauty Salon","Grocery Store","Airport","Garage"];
+const CORRECT_SET = ["Airport","Gas Station","Bowling Alley","Route 66","Vacation"];
 const CORRECT_URL = "https://pagehq.github.io/correct";
 const WRONG_URL = "https://pagehq.github.io/wrong";
 

@@ -11,8 +11,8 @@ const ITEMS = [
 ];
 
 const CORRECT_SET = ["Airport","Gas Station","Bowling Alley","Route 66","Vacation"];
-const CORRECT_URL = "correct/";
-const WRONG_URL = "wrong/";
+const CORRECT_URL = "correct.html";
+const WRONG_URL = "wrong.html";
 
 function render() {
   const frag = document.createDocumentFragment();

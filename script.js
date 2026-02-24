@@ -11,8 +11,8 @@ const ITEMS = [
 ];
 
 const CORRECT_SET = ["Airport","Gas Station","Bowling Alley","Route 66","Vacation"];
-const CORRECT_URL = "https://pagehq.github.io/correct";
-const WRONG_URL = "https://pagehq.github.io/wrong";
+const CORRECT_URL = "https://pagehq.github.io/findthecat/correct";
+const WRONG_URL = "https://pagehq.github.io/findthecat/wrong";
 
 function render(){
   const frag = document.createDocumentFragment();

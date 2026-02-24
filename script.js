@@ -11,10 +11,10 @@ const ITEMS = [
 ];
 
 const CORRECT_SET = ["Airport","Gas Station","Bowling Alley","Route 66","Vacation"];
-const CORRECT_URL = "https://pagehq.github.io/findthecat/correct";
-const WRONG_URL = "https://pagehq.github.io/findthecat/wrong";
+const CORRECT_URL = "correct/";
+const WRONG_URL = "wrong/";
 
-function render(){
+function render() {
   const frag = document.createDocumentFragment();
 
   ITEMS.forEach((t, i) => {
@@ -27,11 +27,11 @@ function render(){
   grid.appendChild(frag);
 }
 
-function selectedValues(){
+function selectedValues() {
   return [...grid.querySelectorAll('input[type="checkbox"]:checked')].map(x => x.value);
 }
 
-function isCorrectSelection(selected){
+function isCorrectSelection(selected) {
   if (selected.length !== CORRECT_SET.length) return false;
   const s = new Set(selected);
   return CORRECT_SET.every(x => s.has(x));
@@ -39,7 +39,7 @@ function isCorrectSelection(selected){
 
 sendBtn.addEventListener('click', () => {
   const selected = selectedValues();
-  window.location.href = isCorrectSelection(selected) ? CORRECT_URL : WRONG_URL;
+  location.href = isCorrectSelection(selected) ? CORRECT_URL : WRONG_URL;
 });
 
 render();

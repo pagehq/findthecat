@@ -8,27 +8,37 @@
 </head>
 <body>
   <main class="box center">
-    <h1 class="title">Awesome! 🎉</h1>
+    <h1 class="title">Good job! 🎉</h1>
 
-    <p class="lead">
-      You earned your bonus by finding all five hidden cats — click below to claim your reward.
-    </p>
+    <p class="lead"><strong>You earned your bonus by finding all five hidden cats — click below to claim your reward.</strong></p>
 
     <div class="stack">
-      <a class="btn-blue" href="REWARD_LINK_HERE" target="_blank" rel="noopener">
-        Claim your reward
-      </a>
-
-      <a class="btn-blue" href="AMAZON_REVIEW_LINK_HERE" target="_blank" rel="noopener">
-        Leave an honest Amazon review
-      </a>
+      <button class="btn-blue" type="button" id="bonusBtn">CLAIM YOUR BONUS</button>
     </div>
 
     <p class="small">
-      If you enjoyed the book and the cat game, an honest review on Amazon is the best way to give something back.
+      If the book made you smile, please take a moment to leave a sincere Amazon review — it truly helps this little project grow.
     </p>
+
+    <div class="stack">
+      <button class="btn-blue" type="button" id="reviewBtn">LEAVE AN AMAZON REVIEW</button>
+    </div>
   </main>
 
   <script src="script.js"></script>
+
+  <script>
+    // links
+    const BONUS_LINK = "REWARD_LINK_HERE";
+    const REVIEW_LINK = "AMAZON_REVIEW_LINK_HERE";
+
+    document.getElementById('bonusBtn').addEventListener('click', () => {
+      window.location.href = BONUS_LINK;
+    });
+
+    document.getElementById('reviewBtn').addEventListener('click', () => {
+      window.location.href = REVIEW_LINK;
+    });
+  </script>
 </body>
 </html>

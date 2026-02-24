@@ -60,9 +60,7 @@ body{
   word-break:break-word;
 }
 
-.cell strong{
-  font-weight:800;
-}
+.cell strong{ font-weight:800; }
 
 .actions{
   display:flex;
@@ -86,13 +84,6 @@ button{
 
 button:hover{ background:#15803d; }
 button:active{ transform:translateY(1px); }
-
-.out{
-  margin:10px 2px 0;
-  font-size:14px;
-  color:#444;
-  text-align:center;
-}
 
 @media (max-width:620px){
   .grid{ grid-template-columns:repeat(3,minmax(0,1fr)); }

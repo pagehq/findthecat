@@ -28,12 +28,17 @@
 
   <script>
     // links
-    const BONUS_LINK = "https://drive.google.com/file/d/1RT34-t1MZsvcPVGomU2wYbBLDctP5Jwb/view?usp=sharing";
+    //const BONUS_LINK = "https://drive.google.com/file/d/1RT34-t1MZsvcPVGomU2wYbBLDctP5Jwb/view?usp=sharing";
     const REVIEW_LINK = "AMAZON_REVIEW_LINK_HERE";
 
-    document.getElementById('bonusBtn').addEventListener('click', () => {
-      window.location.href = BONUS_LINK;
-    });
+  document.getElementById('bonusBtn').addEventListener('click', () => {
+    const link = document.createElement('a');
+    link.href = "SEARCH and FIND - COLOR.pdf";      // nome file
+    link.download = "SEARCH and FIND - COLOR.pdf";  // nome con cui viene salvato
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  });
 
     document.getElementById('reviewBtn').addEventListener('click', () => {
       window.location.href = REVIEW_LINK;

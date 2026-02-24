@@ -1,11 +1,36 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Correct</title>
+  <link rel="stylesheet" href="../style.css" />
 </head>
 <body>
-  <h1>Correct! 🎉</h1>
-  <p>You found all the cats!</p>
+  <main class="box">
+    <h1 class="title">Bravo! You found all the cats 🐾</h1>
+
+    <div class="result">
+      <p class="msg">
+        Your bonus is a <strong>Print &amp; Play PDF</strong> with brand-new, full-color
+        <strong>Search &amp; Find</strong> pages to keep playing.
+      </p>
+
+      <form id="bonusForm" class="form" novalidate>
+        <label class="label" for="email">Where should I send it?</label>
+
+        <div class="row">
+          <input id="email" class="input" type="email" autocomplete="email" placeholder="you@example.com" required />
+          <button class="btnGreen" type="submit">GET THE BONUS</button>
+        </div>
+
+        <p id="formMsg" class="formMsg" aria-live="polite"></p>
+      </form>
+
+      <a class="btn" href="../">Back</a>
+    </div>
+  </main>
+
+  <script src="../script.js"></script>
 </body>
 </html>

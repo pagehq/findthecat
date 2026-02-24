@@ -4,33 +4,39 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Correct</title>
-  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <main class="box">
-    <h1 class="title">Bravo! You found all the cats 🐾</h1>
+    <h1 class="title">Awesome! 🎉</h1>
 
-    <div class="result">
-      <p class="msg">
-        Your bonus is a <strong>Print &amp; Play PDF</strong> with brand-new, full-color
-        <strong>Search &amp; Find</strong> pages to keep playing.
+    <p class="msg">
+      You found all five cats — great job!
+    </p>
+
+    <div class="card">
+      <h2 class="subtitle">Claim your reward</h2>
+      <p class="text">
+        Click the link below to get your bonus:
+      </p>
+      <a class="link" href="REWARD_LINK_HERE" target="_blank" rel="noopener">
+        👉 Get my reward
+      </a>
+    </div>
+
+    <div class="card">
+      <h2 class="subtitle">One tiny favor? 🙏</h2>
+      <p class="text">
+        If you enjoyed the book and the cat game, I’d truly appreciate an honest Amazon review.
+        It really helps — especially since you just unlocked a bonus 😊
       </p>
 
-      <form id="bonusForm" class="form" novalidate>
-        <label class="label" for="email">Where should I send it?</label>
-
-        <div class="row">
-          <input id="email" class="input" type="email" autocomplete="email" placeholder="you@example.com" required />
-          <button class="btnGreen" type="submit">GET THE BONUS</button>
-        </div>
-
-        <p id="formMsg" class="formMsg" aria-live="polite"></p>
-      </form>
-
-      <a class="btn" href="../">Back</a>
+      <a class="btn review" href="AMAZON_REVIEW_LINK_HERE" target="_blank" rel="noopener">
+        Leave an Amazon review
+      </a>
     </div>
   </main>
 
-  <script src="../script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

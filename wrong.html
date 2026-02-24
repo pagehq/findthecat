@@ -19,22 +19,16 @@
     <p class="small">
       Please leave an honest Amazon review, then email me and I’ll send you the bonus:
       <br>
-      <strong><a href="mailto:YOUR_EMAIL_HERE?subject=Find%20the%205%20Cats%20Bonus&body=Hi!%0A%0AI%20left%20an%20Amazon%20review%20and%20I'd%20love%20to%20receive%20the%20bonus.%0A%0AThanks!" style="color:#111;text-decoration:underline;">YOUR_EMAIL_HERE</a></strong>
+      <strong><a href="mailto:YOUR_EMAIL_HERE" style="color:#111;text-decoration:underline;">YOUR_EMAIL_HERE</a></strong>
     </p>
 
     <div class="stack">
-      <button class="btn-blue" type="button" id="tryAgainBtn">KEEP SEARCHING</button>
       <button class="btn-blue" type="button" id="reviewBtn">LEAVE AN AMAZON REVIEW</button>
     </div>
   </main>
 
   <script>
     const REVIEW_LINK = "AMAZON_REVIEW_LINK_HERE";
-    const TRY_AGAIN_LINK = "index.html"; // oppure "./" se preferisci
-
-    document.getElementById('tryAgainBtn').addEventListener('click', () => {
-      location.href = TRY_AGAIN_LINK;
-    });
 
     document.getElementById('reviewBtn').addEventListener('click', () => {
       location.href = REVIEW_LINK;

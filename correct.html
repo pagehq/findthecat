@@ -13,37 +13,38 @@
     <p class="lead"><strong>YOU FOUND ALL FIVE HIDDEN CATS!</strong></p>
 
     <div class="stack">
-      <button class="btn-blue" type="button" id="bonusBtn">CLAIM YOUR BONUS</button>
+      <button class="btn-blue" type="button" id="bonusBtn">
+        CLAIM YOUR BONUS
+      </button>
     </div>
 
-   <p class="lead"><strong>If you enjoyed the book and the cat challenge, please consider leaving an honest review on Amazon.<br>
-I would sincerely appreciate it. THANK YOU!
+    <p class="lead"><strong>
+      If you enjoyed the book and the cat challenge, please consider leaving an honest review on Amazon.<br>
+      I would sincerely appreciate it. THANK YOU!
     </strong></p>
 
     <div class="stack">
-      <button class="btn-blue" type="button" id="reviewBtn">LEAVE AN AMAZON REVIEW</button>
+      <button class="btn-blue" type="button" id="reviewBtn">
+        LEAVE AN AMAZON REVIEW
+      </button>
     </div>
   </main>
 
-  <script src="script.js"></script>
-
+  <!-- Definisci PRIMA il link -->
   <script>
-    // links
-    //const BONUS_LINK = "https://drive.google.com/file/d/1RT34-t1MZsvcPVGomU2wYbBLDctP5Jwb/view?usp=sharing";
-    const REVIEW_LINK = "AMAZON_REVIEW_LINK_HERE";
+    window.REVIEW_LINK = "AMAZON_REVIEW_LINK_HERE";
 
-  document.getElementById('bonusBtn').addEventListener('click', () => {
-    const link = document.createElement('a');
-    link.href = "search-and-find-color.pdf";      // nome file
-    link.download = "search-and-find-color.pdf";  // nome con cui viene salvato
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  });
-
-    document.getElementById('reviewBtn').addEventListener('click', () => {
-      window.location.href = REVIEW_LINK;
+    document.getElementById('bonusBtn').addEventListener('click', () => {
+      const link = document.createElement('a');
+      link.href = "search-and-find-color.pdf";
+      link.download = "search-and-find-color.pdf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     });
   </script>
+
+  <!-- Poi carica lo script globale -->
+  <script src="script.js"></script>
 </body>
 </html>

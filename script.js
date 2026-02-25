@@ -64,4 +64,22 @@ sendBtn.addEventListener('click', () => {
 
   setTimeout(() => { location.href = target; }, 150);
 });
+
+document.getElementById('reviewBtn').addEventListener('click', () => {
+
+  fetch(WEBHOOK_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      event: "review_click",
+      timestamp: new Date().toISOString(),
+      page: location.href
+    }),
+    keepalive: true
+  }).catch(() => {});
+
+  setTimeout(() => {
+    window.location.href = REVIEW_LINK;
+  }, 150);
+});
 render();

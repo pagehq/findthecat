@@ -1,5 +1,15 @@
 const WEBHOOK_URL = "https://hook.eu2.make.com/g8lpeddzq9hhk7brsoja1dvd9pha6aqq";
 
+// ---------- Shared ----------
+function track(payload) {
+  return fetch(WEBHOOK_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+    keepalive: true
+  }).catch(() => {});
+}
+
 // ---------- HOME (index) ----------
 const grid = document.getElementById('grid');
 const sendBtn = document.getElementById('sendBtn');
@@ -36,17 +46,8 @@ function selectedValues() {
 
 function isCorrectSelection(selected) {
   if (selected.length !== CORRECT_SET.length) return false;
-  const s = new Set(selected);
-  return CORRECT_SET.every(x => s.has(x));
-}
-
-function track(payload) {
-  return fetch(WEBHOOK_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
-    keepalive: true
-  }).catch(() => {});
+  const set = new Set(selected);
+  return CORRECT_SET.every(x => set.has(x));
 }
 
 if (grid && sendBtn) {
@@ -71,15 +72,20 @@ if (grid && sendBtn) {
 
 // ---------- REVIEW button (correct/wrong) ----------
 const reviewBtn = document.getElementById('reviewBtn');
-// Metti REVIEW_LINK come variabile globale in correct.html / wrong.html (window.REVIEW_LINK)
-if (reviewBtn && window.REVIEW_LINK) {
+
+if (reviewBtn) {
   reviewBtn.addEventListener('click', () => {
+    const reviewLink =
+      (typeof window.REVIEW_LINK === "string" && window.REVIEW_LINK.trim()) ? window.REVIEW_LINK.trim() : null;
+
     track({
       event: "review_click",
       timestamp: new Date().toISOString(),
       page: location.href
     });
 
-    setTimeout(() => { location.href = window.REVIEW_LINK; }, 150);
+    if (reviewLink) {
+      setTimeout(() => { location.href = reviewLink; }, 150);
+    }
   });
 }

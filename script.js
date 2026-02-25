@@ -48,22 +48,20 @@ sendBtn.addEventListener('click', () => {
   const isCorrect = isCorrectSelection(selected);
 
   const target = isCorrect ? CORRECT_URL : WRONG_URL;
-  const payload = {
-    result: isCorrect ? "CORRECT" : "WRONG",
-    selected,
-    selectedText: selected.join(", "),
-    page: location.href,
-    timestamp: new Date().toISOString()
-  };
 
-  // invio "fire-and-forget" + redirect
   fetch(WEBHOOK_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
+    body: JSON.stringify({
+      event: "send_click",
+      result: isCorrect ? "CORRECT" : "WRONG",
+      selectedText: selected.join(", "),
+      timestamp: new Date().toISOString(),
+      page: location.href
+    }),
     keepalive: true
-  }).catch(() => { /* ignore */ });
+  }).catch(() => {});
 
-  location.href = target;
+  setTimeout(() => { location.href = target; }, 150);
 });
 render();

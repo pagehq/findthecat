@@ -37,9 +37,33 @@ function isCorrectSelection(selected) {
   return CORRECT_SET.every(x => s.has(x));
 }
 
+//sendBtn.addEventListener('click', () => {
+  //const selected = selectedValues();
+  //location.href = isCorrectSelection(selected) ? CORRECT_URL : WRONG_URL;
+//});
+const WEBHOOK_URL = "https://hook.eu2.make.com/g8lpeddzq9hhk7brsoja1dvd9pha6aqq";
+
 sendBtn.addEventListener('click', () => {
   const selected = selectedValues();
-  location.href = isCorrectSelection(selected) ? CORRECT_URL : WRONG_URL;
-});
+  const isCorrect = isCorrectSelection(selected);
 
+  const target = isCorrect ? CORRECT_URL : WRONG_URL;
+  const payload = {
+    result: isCorrect ? "CORRECT" : "WRONG",
+    selected,
+    selectedText: selected.join(", "),
+    page: location.href,
+    timestamp: new Date().toISOString()
+  };
+
+  // invio "fire-and-forget" + redirect
+  fetch(WEBHOOK_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+    keepalive: true
+  }).catch(() => { /* ignore */ });
+
+  location.href = target;
+});
 render();

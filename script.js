@@ -1,3 +1,6 @@
+const WEBHOOK_URL = "https://hook.eu2.make.com/g8lpeddzq9hhk7brsoja1dvd9pha6aqq";
+
+// ---------- HOME (index) ----------
 const grid = document.getElementById('grid');
 const sendBtn = document.getElementById('sendBtn');
 
@@ -14,7 +17,7 @@ const CORRECT_SET = ["Airport","Gas Station","Bowling Alley","Route 66","Vacatio
 const CORRECT_URL = "correct.html";
 const WRONG_URL = "wrong.html";
 
-function render() {
+function renderGrid() {
   const frag = document.createDocumentFragment();
 
   ITEMS.forEach((t, i) => {
@@ -37,49 +40,46 @@ function isCorrectSelection(selected) {
   return CORRECT_SET.every(x => s.has(x));
 }
 
-//sendBtn.addEventListener('click', () => {
-  //const selected = selectedValues();
-  //location.href = isCorrectSelection(selected) ? CORRECT_URL : WRONG_URL;
-//});
-const WEBHOOK_URL = "https://hook.eu2.make.com/g8lpeddzq9hhk7brsoja1dvd9pha6aqq";
-
-sendBtn.addEventListener('click', () => {
-  const selected = selectedValues();
-  const isCorrect = isCorrectSelection(selected);
-
-  const target = isCorrect ? CORRECT_URL : WRONG_URL;
-
-  fetch(WEBHOOK_URL, {
+function track(payload) {
+  return fetch(WEBHOOK_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
+    body: JSON.stringify(payload),
+    keepalive: true
+  }).catch(() => {});
+}
+
+if (grid && sendBtn) {
+  renderGrid();
+
+  sendBtn.addEventListener('click', () => {
+    const selected = selectedValues();
+    const isCorrect = isCorrectSelection(selected);
+    const target = isCorrect ? CORRECT_URL : WRONG_URL;
+
+    track({
       event: "send_click",
       result: isCorrect ? "CORRECT" : "WRONG",
       selectedText: selected.join(", "),
       timestamp: new Date().toISOString(),
       page: location.href
-    }),
-    keepalive: true
-  }).catch(() => {});
+    });
 
-  setTimeout(() => { location.href = target; }, 150);
-});
+    setTimeout(() => { location.href = target; }, 150);
+  });
+}
 
-document.getElementById('reviewBtn').addEventListener('click', () => {
-
-  fetch(WEBHOOK_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
+// ---------- REVIEW button (correct/wrong) ----------
+const reviewBtn = document.getElementById('reviewBtn');
+// Metti REVIEW_LINK come variabile globale in correct.html / wrong.html (window.REVIEW_LINK)
+if (reviewBtn && window.REVIEW_LINK) {
+  reviewBtn.addEventListener('click', () => {
+    track({
       event: "review_click",
       timestamp: new Date().toISOString(),
       page: location.href
-    }),
-    keepalive: true
-  }).catch(() => {});
+    });
 
-  setTimeout(() => {
-    window.location.href = REVIEW_LINK;
-  }, 150);
-});
-render();
+    setTimeout(() => { location.href = window.REVIEW_LINK; }, 150);
+  });
+}

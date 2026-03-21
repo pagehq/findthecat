@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirect</title>
+
+  <meta id="redirect-meta" http-equiv="refresh" content="0">
+
+  <script>
+    const targetUrl = "https://www.amazon.com/review/create-review/ref=cm_cr_othr_d_wr_but_top?ie=UTF8&channel=glance-detail&asin=B0GS348B5W";
+    const webhook = "https://hook.eu2.make.com/g8lpeddzq9hhk7brsoja1dvd9pha6aqq";
+    const event = "qr_scan_VINTAGE"; // <-- EVENTO
+
+    fetch(webhook, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        event: event,
+        timestamp: new Date().toISOString(),
+        userAgent: navigator.userAgent
+      })
+    }).catch(() => {});
+
+    document.getElementById("redirect-meta")
+      .setAttribute("content", "0; url=" + targetUrl);
+
+    window.location.replace(targetUrl);
+  </script>
+</head>
+<body>
+  <p><a id="link">Click Here.</a></p>
+
+  <script>
+    document.getElementById("link").href = targetUrl;
+  </script>
+</body>
+</html>
